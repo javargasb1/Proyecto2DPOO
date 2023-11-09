@@ -1,0 +1,5 @@
+placa:marca:modelo:color:tipoDeTransmision:categoria:sede:precio
+JNV798:Volkswagen:2021:Gris:Hidraulico:Pequeno:UsaquenAlquila:717340.0
+DNO654:BMW:2022:Rojo:Hidraulico:Lujo:ChapiAlquila:103982.0
+KSA232:KIA:2018:Azul:Electrico:SUV:ChapiRenta:985431.0
+SJU764:Chevrolet:2020:Negro:Mecanico:VAN:UsaquenAlquila:1533420.0

@@ -1,0 +1,5 @@
+usuario:contraseña:nombre:datosContacto:nacimiento:nacionalidad:cedula:datosLicencia:datosPago
+cliente1:claveCliente1:Laura Garzon:3115148796,l.garzon@gmail.com:2003-01-20:colombiana:1000567891:Licencia1234,Colombia,5/12/2030:Tarjeta5432,2030-12-24
+cliente2:claveCliente2:Laura Garzon:3115148796,l.garzon@gmail.com:2003-01-20:colombiana:1000567891:Licencia1234,Colombia,5/12/2030:Tarjeta5432,2030-12-24
+cliente3:claveCliente3:Laura Garzon:3115148796,l.garzon@gmail.com:2003-01-20:colombiana:1000567891:Licencia1234,Colombia,5/12/2030:Tarjeta5432,2030-12-24
+s.vasquezt:clave:a:8,j:2023-01-29:a:1000:5,c,2024-02-23:123456,2024-01-12

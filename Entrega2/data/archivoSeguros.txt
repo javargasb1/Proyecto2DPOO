@@ -1,0 +1,3 @@
+Seguro daños por choques;108000
+Seguro daños por robos;98000
+Seguro daños por accidentes;163000

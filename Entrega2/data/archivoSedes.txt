@@ -1,0 +1,4 @@
+nombre:ubicacion:horario
+ChapiRenta;Chapinero;08:00-23:00
+ChapiAlquila;Chapinero;07:00-23:00
+UsaquenAlquila;Usaquen;08:00-23:00

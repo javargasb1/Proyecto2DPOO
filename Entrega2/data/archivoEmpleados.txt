@@ -1,0 +1,5 @@
+usuario:contraseña:trabajo:nombre:ubicacion
+empleado:claveEmpleado:ActualizadorEstadoVehiculo:Pepito:Usaquen
+adminSede:claveAdminSede:AdministradorLocal:Juan:Usaquen
+empleado:claveEmpleado:ActualizadorEstadoVehiculo:Emilio:Chapinero
+adminSede:claveAdminSede:AdministradorLocal:Laura:Chapinero
