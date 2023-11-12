@@ -1,4 +1,4 @@
-package uniandes.dpoo.proyecto1.modelo;
+package uniandes.dpoo.proyecto1.consola;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,8 +10,13 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 import uniandes.dpoo.proyecto1.consola.ConsolaPrincipal;
+import uniandes.dpoo.proyecto1.modelo.ActualizadorEstadoVehiculo;
+import uniandes.dpoo.proyecto1.modelo.AdministradorLocal;
+import uniandes.dpoo.proyecto1.modelo.Sede;
+import uniandes.dpoo.proyecto1.modelo.Usuario;
+import uniandes.dpoo.proyecto1.modelo.Vehiculo;
 
-public class ControladorEmpleado
+public class ConsolaEmpleado
 {
 	private static String placa;
 	private static String marca;

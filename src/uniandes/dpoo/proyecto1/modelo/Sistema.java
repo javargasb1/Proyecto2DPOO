@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import uniandes.dpoo.proyecto1.consola.ConsolaCliente;
+import uniandes.dpoo.proyecto1.consola.ConsolaEmpleado;
 import uniandes.dpoo.proyecto1.consola.ConsolaPrincipal;
 
 public class Sistema
@@ -115,7 +117,7 @@ public class Sistema
 				Cliente usuario= AutentificadorCliente(login,clave);
 				if (usuario!=null) {
 					System.out.println("Estas registrado como cliente");
-					ControladorCliente.mostrarConsolaCliente(usuario);
+					ConsolaCliente.mostrarConsolaCliente(usuario);
 				}
 				else {
 					System.out.println("Ingresaste la clave incorrecta o si no estas registrado, crea una cuenta!");
@@ -126,7 +128,7 @@ public class Sistema
 				Usuario usuario = AutentificadorEmpleado(login,clave);
 				if (usuario!=null) {
 					System.out.println("Estas registrado como empleado");
-					ControladorEmpleado.mostrarConsolaEmpleado(usuario);
+					ConsolaEmpleado.mostrarConsolaEmpleado(usuario);
 				}
 				else {
 				System.out.println("Ingresaste la clave incorrecta o si no estas registrado, crea una cuenta!");
