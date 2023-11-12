@@ -50,14 +50,16 @@ public class ConsolaPrincipal {
 	public void ejecutarConsolaPrincipal() throws IOException {
 		boolean continuar= true;
 		 System.out.println("Bienvenido al Alquiler de Carros !\n");
+		 String login = "";
+		 String clave = "";
+		 int opcion = 0;
 		 while (continuar) {
 			 mostrarMenuInicial();
-			 int opcion = Integer.parseInt(input("Por favor seleccione una opción:"));
 			 if (opcion ==1 ) {
 				 sistema.crearCuenta();
 			 }
 			 else if (opcion ==2) {
-				 sistema.iniciarSesion();
+				 sistema.iniciarSesion(login,clave,opcion);
 			 }
 			 else if (opcion ==3 ) {
 				 continuar=false;
