@@ -77,6 +77,11 @@ public class InicioSesionInterfaz extends JFrame
 			JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+
+	public void CrearCuenta() 
+	{
+		new InterfazCrearCuenta();
+	}
 	
 }
 

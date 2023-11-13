@@ -73,11 +73,11 @@ public class CrearReservaDialog extends JDialog
         comboRecogerSede = new JComboBox<>(new String[]{"ChapiRenta", "ChapiAlquila", "UsaquenAlquila"});
         addToPanel(panel, comboRecogerSede, gbc, 1, 1);
 
-        addToPanel(panel, new JLabel("Fecha de recogida (AA-MM-DD):"), gbc, 0, 2);
+        addToPanel(panel, new JLabel("Fecha de recogida (AAAA-MM-DD):"), gbc, 0, 2);
         txtFechaRecogida = new JTextField(7);
         addToPanel(panel, txtFechaRecogida, gbc, 1, 2);
         
-        addToPanel(panel, new JLabel("Fecha de devolución (AA-MM-DD):"), gbc, 0, 3);
+        addToPanel(panel, new JLabel("Fecha de devolución (AAAA-MM-DD):"), gbc, 0, 3);
         txtFechaDevolucion = new JTextField(7);
         addToPanel(panel, txtFechaDevolucion, gbc, 1, 3);
         

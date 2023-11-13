@@ -137,9 +137,5 @@ public class InterfazCliente extends JFrame
 		}	
 	}
 	
-	public void MostrarMensajeReservaExito() 
-	{
-		
-	}
-    
+  
 }

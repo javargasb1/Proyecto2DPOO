@@ -29,69 +29,33 @@ public class Sistema
 	public static ArrayList<Seguro> listaSeguros;
 	public static ArrayList<Reserva> listaReservas;
 	
-	public void crearCuenta() throws IOException {
-		System.out.println("Porfavor Seleccione: ");
-		System.out.println("1. Cliente \n2. Empleado");
-		int opcion = Integer.parseInt(input(""));
-		System.out.println("Vamos a crear tu cuenta! Porfavor Ingrese los siguientes datos: ");
-		if (opcion ==1 ) {
-			String nombre = input ("\nIngrese su nombre: \n");
-			String contacto1 = input ("\nIngrese su cecular de contacto: \n");
-			String contacto2 = input ("\nIngrese su email de contacto: \n");
-			ArrayList<String> contacto = new ArrayList<String>();
-			contacto.add(contacto1);
-			contacto.add(contacto2);
-			String nacimiento1 = input ("\nIngrese su fecha de nacimiento con el formato AA-MM-DD: \n");
-			LocalDate nacimiento= LocalDate.parse(nacimiento1);
-			String nacionalidad = input ("\nIngrese su nacionalidad: \n");
-			String documento = input ("\nIngrese su numero de documento: \n");
-			System.out.println("Porfavor Ingrese los datos de su licencia de conduccion: ");
-			String licencia1 = input ("\nIngrese su numero de licencia: \n");
-			String licencia2 = input ("\nIngrese el pais de expedicion: \n");
-			String licencia3 = input ("\nIngrese la fecha de vencimiento con el formato AA-MM-DD: \n");
-			LicenciaConduccion licencia = new LicenciaConduccion(licencia1, licencia2, licencia3);
-			System.out.println("Porfavor Ingrese los datos de pago: ");
-			String pago1 = input ("\nIngrese su numero de su tarjeta de credito: \n");
-			String pago2 = input ("\nIngrese la fecha de vencimiento de su tarjeta con el formato AA-MM-DD: \n");
-			LocalDate vencimiento= LocalDate.parse(pago2);
-			ArrayList<String> pago = new ArrayList<String>();
-			pago.add(pago1);
-			pago.add(pago2);
-			String login = input ("Cree su login: \n");
-			String clave = input ("Cree su clave: \n");
-			usuariosClientes.put(login, clave);
-			Cliente nuevo = new Cliente(nombre, login, clave, contacto, nacimiento, nacionalidad, documento, licencia, pago);
-			listaClientes.add(nuevo);
-			reEscribirClientes();
-			System.out.println("Cuenta creada! Porfavor inicia sesion");
-			
+	
+	public void crearCuentaCliente(String nombre, String login, String clave, ArrayList<String> datosContacto, LocalDate nacimiento, 
+			String nacionalidad, String imagenDocumento,
+			LicenciaConduccion datosLicencia,ArrayList<String> datosTarjeta) throws IOException, ParseException
+	{
+		cargarDatos();
+		usuariosClientes.put(login, clave);
+		Cliente nuevo = new Cliente(nombre, login, clave, datosContacto, nacimiento, nacionalidad, imagenDocumento, datosLicencia, datosTarjeta);
+		listaClientes.add(nuevo);
+		reEscribirClientes();
+		System.out.println("Cuenta creada! Porfavor inicia sesion");
+	}
+	
+	public void crearCuentaEmpleado(int opcion,String login, String clave, String nombre, String ubicacion) throws IOException, ParseException 
+	{
+		cargarDatos(); 
+		usuariosEmpleados.put(login, clave);
+		if(opcion==1) {
+			AdministradorLocal nuevo = new AdministradorLocal(login, clave,nombre, ubicacion);
+			listaEmpleados.add(nuevo);
 		}
-		else if (opcion ==2 ) {
-			System.out.println("Porfavor Seleccione: ");
-			System.out.println("1. Administrador local \n2. Actualizador del estado de vehiculos");
-			int opcion1 = Integer.parseInt(input(""));
-			String nombre = input ("\nIngrese su nombre: \n");
-			String ubicacion = input ("\nIngrese su ubicacion actual en donde opera (Usaquen, Chapinero...): \n");
-			String login = input ("Cree su login: \n");
-			String clave = input ("Cree su clave: \n");
-			usuariosEmpleados.put(login, clave);
-			if(opcion1==1) {
-				AdministradorLocal nuevo = new AdministradorLocal(login, clave,nombre, ubicacion);
-				listaEmpleados.add(nuevo);
-			}
-			if(opcion1==2) {
-				ActualizadorEstadoVehiculo nuevo = new ActualizadorEstadoVehiculo(login, clave,nombre, ubicacion);
-				listaEmpleados.add(nuevo);
-			}
-			reEscribirEmpleados();
-			System.out.println("Cuenta creada! Porfavor inicia sesion");
-
+		if(opcion==2) {
+			ActualizadorEstadoVehiculo nuevo = new ActualizadorEstadoVehiculo(login, clave,nombre, ubicacion);
+			listaEmpleados.add(nuevo);
 		}
-		else {
-			System.out.println("Opcion no valida ");
-		}
-		
-		
+		reEscribirEmpleados();
+		System.out.println("Cuenta creada! Porfavor inicia sesion");
 		
 	}
 	

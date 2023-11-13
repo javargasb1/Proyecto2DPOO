@@ -25,6 +25,7 @@ public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
 	private JTextField txtUsuario;
     private JPasswordField txtContraseña;
     private JButton btnIniciarSesion;
+    private JButton btnCrearCuenta;
     private JCheckBox chkMostrarContraseña;
     
     private JRadioButton radioCliente;
@@ -68,6 +69,14 @@ public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
 
         btnIniciarSesion = new JButton("Iniciar Sesión");
         btnIniciarSesion.addActionListener(this);
+        
+        btnCrearCuenta = new JButton("Crear Cuenta");
+        btnCrearCuenta.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                padre.CrearCuenta();
+            }
+        });
 
         // Configuración del GridBagConstraints para el diseño GridBagLayout
         GridBagConstraints gbc = new GridBagConstraints();
@@ -98,6 +107,10 @@ public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
         gbc.gridy = 4;
         gbc.gridwidth = 2; // Ocupa dos columnas
         add(btnIniciarSesion, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.gridwidth = 2; // Ocupa dos columnas
+        add(btnCrearCuenta,gbc);
     }
 	
 	@Override
