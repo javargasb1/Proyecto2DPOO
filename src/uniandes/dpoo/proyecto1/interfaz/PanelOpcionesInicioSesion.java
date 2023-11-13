@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ import javax.swing.JTextField;
 
 public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
 {
+	private InicioSesionInterfaz padre;
 	private JTextField txtUsuario;
     private JPasswordField txtContraseña;
     private JButton btnIniciarSesion;
@@ -29,8 +31,10 @@ public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
     private JRadioButton radioEmpleado;
     
 
-	public PanelOpcionesInicioSesion()
+	public PanelOpcionesInicioSesion(InicioSesionInterfaz padre)
 	{
+		this.padre = padre;
+		
 		setLayout(new GridBagLayout());
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -107,12 +111,15 @@ public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
         {
         	opcion = 2;
         }
-        try {
-			InicioSesionInterfaz.iniciarSesion(usuario,contraseñaString, opcion);
-		} catch (IOException e1) {
+        
+		try {
+			padre.iniciarSesion(usuario,contraseñaString, opcion);
+		} catch (IOException | ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	
+		
 	}
 	
 }

@@ -16,6 +16,7 @@ import uniandes.dpoo.proyecto1.modelo.ControladorCliente;
 import uniandes.dpoo.proyecto1.modelo.Reserva;
 import uniandes.dpoo.proyecto1.modelo.Sede;
 import uniandes.dpoo.proyecto1.modelo.Seguro;
+import uniandes.dpoo.proyecto1.modelo.Sistema;
 import uniandes.dpoo.proyecto1.modelo.Vehiculo;
 
 public class ConsolaCliente
@@ -34,17 +35,16 @@ public class ConsolaCliente
 	private static ArrayList<Seguro> costoSeguros;
 	public static Double costoConductorAdicional;
 	public static ArrayList<ConductorAdicional> conductoresAdicionales;
-	public static Reserva reserva;	
-	public static void mostrarConsolaCliente(Cliente elCliente) throws IOException
+	public static Reserva reserva;
+	
+	public static void mostrarConsolaCliente(Cliente elCliente, int opcion) throws IOException
 	{
 		boolean continuar = true;
 		while (continuar)
 		{
-		mostrarMenu();
-		int opcion = Integer.parseInt(input("Por favor seleccione una opción:"));
 		 if (opcion ==1 ) 
 		 	{
-			 reserva = comenzarReserva(elCliente,ConsolaPrincipal.listaSedes,ConsolaPrincipal.listaVehiculos);
+			 reserva = comenzarReserva(elCliente,Sistema.listaSedes,Sistema.listaVehiculos);
 		 }
 		 if(opcion ==2) 
 		 {
@@ -122,7 +122,7 @@ public class ConsolaCliente
 			int a = 0;
 			while(enc == false && a<listaSedes.size())
 			{	
-				Seguro seguro = ConsolaPrincipal.listaSeguros.get(a);
+				Seguro seguro = Sistema.listaSeguros.get(a);
 				System.out.println((a+1)+")"+seguro.getNombre()+":$"+seguro.getPrecio());
 						a +=1;
 			}

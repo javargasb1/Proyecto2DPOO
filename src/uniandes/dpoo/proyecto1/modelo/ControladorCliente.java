@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import uniandes.dpoo.proyecto1.consola.ConsolaPrincipal;
 
 public class ControladorCliente
 {
@@ -39,13 +38,12 @@ public class ControladorCliente
 		int b1 = 0;
 		Cliente cliente1 =null;
 		Reserva reserva1 = null;
-		while(buscar == false && b<ConsolaPrincipal.listaClientes.size())
-		
-	{	
-		Cliente cliente = ConsolaPrincipal.listaClientes.get(b);
-		while(buscar1 == false && b1<ConsolaPrincipal.listaReservas.size())
+		while(buscar == false && b<Sistema.listaClientes.size())	
 		{	
-			reserva1 = ConsolaPrincipal.listaReservas.get(b);
+		Cliente cliente = Sistema.listaClientes.get(b);
+		while(buscar1 == false && b1<Sistema.listaReservas.size())
+		{	
+			reserva1 = Sistema.listaReservas.get(b);
 			cliente1 = reserva1.getcliente();
 			System.out.println(reserva1.getCostoConductorAdicional());
 			b1+=1;
@@ -57,7 +55,7 @@ public class ControladorCliente
 			}
 		}
 		b +=1;
-	}
+		}
 		return reserva1;
 	}
 	
@@ -70,13 +68,13 @@ public class ControladorCliente
 			int b1 = 0;
 			Cliente cliente1 =null;
 			Reserva reserva1 = null;
-			while(buscar == false && b<ConsolaPrincipal.listaClientes.size())
+			while(buscar == false && b<Sistema.listaClientes.size())
 			
 		{	
-			Cliente cliente = ConsolaPrincipal.listaClientes.get(b);
-			while(buscar1 == false && b1<ConsolaPrincipal.listaReservas.size())
+			Cliente cliente = Sistema.listaClientes.get(b);
+			while(buscar1 == false && b1<Sistema.listaReservas.size())
 			{	
-				reserva1 = ConsolaPrincipal.listaReservas.get(b);
+				reserva1 = Sistema.listaReservas.get(b);
 				cliente1 = reserva1.getcliente();
 				System.out.println(reserva1.getCostoConductorAdicional());
 				b1+=1;
@@ -99,7 +97,7 @@ public class ControladorCliente
 		System.out.println("Su reserva a sido creada con exito, cuando sea la hora adecuada, recoja su vehiculo.");
 		reserva.actualizarTemporada(fechaRecogida);
 		reserva.actualizarPrecio();
-		ConsolaPrincipal.listaReservas.add(reserva);
+		Sistema.listaReservas.add(reserva);
 		reEscribirReservas();
 		temporada = reserva.getTemporada();
 		precio = (Double) reserva.getPrecio();
@@ -123,9 +121,9 @@ public class ControladorCliente
 		ArrayList<LocalTime> horario;
 		LocalTime horainf = null;
 		LocalTime horasup = null;
-		while(encontrado == false && i<ConsolaPrincipal.listaSedes.size())
+		while(encontrado == false && i<Sistema.listaSedes.size())
 		{
-			Sede sede1 = ConsolaPrincipal.listaSedes.get(i);
+			Sede sede1 = Sistema.listaSedes.get(i);
 			String sede2 = sede1.getnombre();
 			if (sedeRecoger.getnombre().equals(sede2))
 			{
@@ -170,7 +168,7 @@ public class ControladorCliente
 			conductoresAdicionales.add(nuevoConductor);
 			conductor = input("\nDesea adicionar otro conductor? (SI/NO): \n");
 		}
-		ConsolaPrincipal.listaReservas.remove(reserva);
+		Sistema.listaReservas.remove(reserva);
 		String esp = reserva.getEspecial();
 		boolean especial =false;
 		if (esp.equals("1"))
@@ -178,7 +176,7 @@ public class ControladorCliente
 			especial=true;
 		}
 		Reserva actualizarreserva = new Reserva(reserva.getcliente(), reserva.getcategoria(), reserva.getsede(), reserva.getfechaRecogida(), reserva.gethoraRecogida(), especial,  reserva.getlistaVehiculos(), reserva.getfechaDevuelta(),  reserva.getrangoHoras(), reserva.getTemporada(), reserva.getsedeEntrega(), reserva.getPrecio(),reserva.getCostosSeguro(), costoConductorAdicional, conductoresAdicionales,  reserva.getVehiculo());
-		ConsolaPrincipal.listaReservas.add(actualizarreserva);
+		Sistema.listaReservas.add(actualizarreserva);
 		if (conductor.equals("NO"))
 		{
 			salir = false;
@@ -254,8 +252,8 @@ public class ControladorCliente
 
 	public static void reEscribirReservas() throws IOException {
 		String data="login:categoria:nombreSede:fechaRecogida:horaRecogida:especial:fechaDevuelta:rangoDeHoras:temporada:sedeEntrega:precio:Seguros:costoConductorAdicional:conductoresAdicionales\n";
-		for (int a =0 ; a < ConsolaPrincipal.listaReservas.size(); a++) {
-			Reserva laReserva = ConsolaPrincipal.listaReservas.get(a);
+		for (int a =0 ; a < Sistema.listaReservas.size(); a++) {
+			Reserva laReserva = Sistema.listaReservas.get(a);
 			data+= laReserva.getcliente().getLogin()+ ";" + laReserva.getcategoria()+ ";" + laReserva.getsede().getnombre()+ ";" + laReserva.getfechaRecogida().toString()+ ";" + laReserva.gethoraRecogida().toString()+ ";" + laReserva.getEspecial()+ ";" + laReserva.getfechaDevuelta().toString()+ ";" + laReserva.getrangoHoras().get(0)+ "," +laReserva.getrangoHoras().get(1)+ ";" + laReserva.getTemporada() + ";" + laReserva.getsedeEntrega().getnombre()+ ";" + laReserva.getPrecio().toString()+";";
 			if(laReserva.getCostosSeguro() == null) {
 				data+="*";
@@ -285,6 +283,11 @@ public class ControladorCliente
 			BufferedWriter output = new BufferedWriter(file);
 			output.write(data);
 			output.close();
+	}
+	
+	public static void setReserva(Reserva reserva)
+	{
+		ControladorCliente.reserva = reserva;
 	}
 
 	public static String input(String mensaje)

@@ -1,16 +1,11 @@
 package uniandes.dpoo.proyecto1.interfaz;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import uniandes.dpoo.proyecto1.consola.ConsolaPrincipal;
 import uniandes.dpoo.proyecto1.modelo.Sistema;
+import uniandes.dpoo.proyecto1.modelo.*;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -29,7 +24,7 @@ public class InicioSesionInterfaz extends JFrame
 		logoPanel.setPreferredSize(new Dimension(anchoVentana/2,largoVentana/2));
 		add(logoPanel,BorderLayout.WEST);
 		
-		panelOpcionesInicioSesion = new PanelOpcionesInicioSesion();
+		panelOpcionesInicioSesion = new PanelOpcionesInicioSesion(this);
 		panelOpcionesInicioSesion.setPreferredSize(new Dimension(anchoVentana/2,largoVentana/2));
 		add(panelOpcionesInicioSesion,BorderLayout.EAST);
 		
@@ -44,12 +39,33 @@ public class InicioSesionInterfaz extends JFrame
 	public static void main(String[] args) throws IOException, ParseException
 	{
 		new InicioSesionInterfaz();
-		Sistema.cargarDatos();
-	}
+	} 
 	
-	public static void iniciarSesion(String login,String clave, int opcion) throws IOException
+	private void cerrarVentana() 
 	{
-		Sistema.iniciarSesion(login,clave,opcion);
+        this.dispose();
+    }
+	
+	public void iniciarSesion(String login,String clave, int opcion) throws IOException, ParseException
+	{
+		Usuario usuario = Sistema.iniciarSesion(login,clave,opcion);
+		if (usuario != null)
+		{
+			cerrarVentana();
+			if (opcion == 1)
+			{
+				InterfazCliente frame = new InterfazCliente(usuario);
+			}
+			else if (opcion == 2)
+			{
+				// Interfaz Empleado
+			}
+		}
+		else 
+		{
+			String mensaje = "Credenciales incorrectas o si no estas registrado, crea una cuenta!\"";
+			JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 	
 }

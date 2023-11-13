@@ -84,10 +84,10 @@ public class Categoria
 		}
 		else
 		{
-			precioparcial+=10%precioparcial;
+			precioparcial+= (precio + precio*0.1);
 		}
 		
-		Double excedente = 20%precio;
+		Double excedente = precio*0.15;
 		if(sedeRecoger.equals(sedeEntrega))
 		{
 			precioparcial=precioparcial;
@@ -113,7 +113,7 @@ public class Categoria
 		}
 		
 		long numdias = DAYS.between(fechaDevuelta, fechaRecogida);
-		precioparcial+=30%precioparcial*numdias;
+		precioparcial+=precioparcial*0.3*Math.abs(numdias);
 		return precioparcial;
 	}
 	public Double precioFinal(String categoria,LocalDate fechaRecogida,LocalDate fechaDevuelta,String temporada,

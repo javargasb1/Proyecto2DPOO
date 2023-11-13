@@ -120,29 +120,37 @@ public class Sistema
 	}
 	
 	
-	public static void iniciarSesion(String login,String clave, int opcion) throws IOException 
+	public static Usuario iniciarSesion(String login,String clave, int opcion) throws IOException, ParseException 
 	{
-		if(opcion==1) {
+		cargarDatos(); // Cargamos los datos
+		if(opcion==1) 
+		{
 				Cliente usuario= AutentificadorCliente(login,clave);
 				if (usuario!=null) {
-					System.out.println("Estas registrado como cliente");
-					ConsolaCliente.mostrarConsolaCliente(usuario);
+					return usuario;
+					// ConsolaCliente.mostrarConsolaCliente(usuario);
 				}
-				else {
+				else 
+				{
 					System.out.println("Ingresaste la clave incorrecta o si no estas registrado, crea una cuenta!");
 				}
-				}
+		}
 			
-		else if (opcion==2) {
+		else if (opcion==2) 
+		{
 				Usuario usuario = AutentificadorEmpleado(login,clave);
-				if (usuario!=null) {
-					System.out.println("Estas registrado como empleado");
-					ConsolaEmpleado.mostrarConsolaEmpleado(usuario);
+				if (usuario!=null) 
+				{
+					return usuario;
+					// ConsolaEmpleado.mostrarConsolaEmpleado(usuario);
 				}
-				else {
+				else 
+				{
 				System.out.println("Ingresaste la clave incorrecta o si no estas registrado, crea una cuenta!");
 				}
-				}
+		}
+		
+		return null;
 	}
 	
 	

@@ -59,7 +59,7 @@ public class ConsolaPrincipal {
 				 sistema.crearCuenta();
 			 }
 			 else if (opcion ==2) {
-				 sistema.iniciarSesion(login,clave,opcion);
+				 //sistema.iniciarSesion(login,clave,opcion);
 			 }
 			 else if (opcion ==3 ) {
 				 continuar=false;

@@ -8,13 +8,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import uniandes.dpoo.proyecto1.consola.ConsolaPrincipal;
 import uniandes.dpoo.proyecto1.modelo.Cliente;
 import uniandes.dpoo.proyecto1.modelo.ConductorAdicional;
 import uniandes.dpoo.proyecto1.modelo.LicenciaConduccion;
 import uniandes.dpoo.proyecto1.modelo.Reserva;
 import uniandes.dpoo.proyecto1.modelo.Sede;
 import uniandes.dpoo.proyecto1.modelo.Seguro;
+import uniandes.dpoo.proyecto1.modelo.Sistema;
 import uniandes.dpoo.proyecto1.modelo.Vehiculo;
 
 public class LoaderReservas {
@@ -32,7 +32,7 @@ public static ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
 			String[] partes = linea.split(";");
 			String login = partes[0];
 			Cliente elCliente = null;
-			for (Cliente c: ConsolaPrincipal.listaClientes) {
+			for (Cliente c: Sistema.listaClientes) {
 				String l= c.getLogin();
 				if(l.equals(login)) {
 					elCliente = c;
@@ -41,7 +41,7 @@ public static ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
 			String categoria = partes[1];
 			String ubi = partes[2];
 			Sede laSede = null;
-			for (Sede s: ConsolaPrincipal.listaSedes) {
+			for (Sede s: Sistema.listaSedes) {
 				String l= s.getnombre();
 				if(l.equals(ubi)) {
 					laSede = s;
@@ -64,7 +64,7 @@ public static ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
 			String temporada = partes[8];
 			String sedeEntrega1 = partes[9];
 			Sede laSede2 = null;
-			for (Sede s1: ConsolaPrincipal.listaSedes) {
+			for (Sede s1: Sistema.listaSedes) {
 				String l= s1.getnombre();
 				if(l.equals(sedeEntrega1)) {
 					laSede2 = s1;
@@ -80,7 +80,7 @@ public static ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
 				int i=0;
 				while(i<seguros.length) {
 					Seguro elSeguro1;
-					for (Seguro s: ConsolaPrincipal.listaSeguros) {
+					for (Seguro s: Sistema.listaSeguros) {
 						String l= s.getNombre();
 						if(l.equals(seguros[0])) {
 							elSeguro1 = s;
@@ -117,7 +117,7 @@ public static ArrayList<Reserva> listaReservas = new ArrayList<Reserva>();
 				i+=1;
 				}
 			}
-			Reserva nueva = elCliente.crearReserva(elCliente, categoria,laSede,fechaRecogida,horaRecogida,especial,ConsolaPrincipal.listaVehiculos,fechaDevuelta,rangoDeHoras,temporada,laSede2,precio,costoSeguros,costoConductor,listaconductores);
+			Reserva nueva = elCliente.crearReserva(elCliente, categoria,laSede,fechaRecogida,horaRecogida,especial,Sistema.listaVehiculos,fechaDevuelta,rangoDeHoras,temporada,laSede2,precio,costoSeguros,costoConductor,listaconductores);
 			listaReservas.add(nueva);
 			linea = br.readLine();
 		 }

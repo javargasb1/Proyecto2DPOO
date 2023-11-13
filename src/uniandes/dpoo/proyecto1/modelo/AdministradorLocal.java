@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import uniandes.dpoo.proyecto1.consola.ConsolaPrincipal;
 
 public class AdministradorLocal implements Usuario{
 
@@ -47,7 +46,7 @@ public class AdministradorLocal implements Usuario{
 	public static void nuevoVehiculo(String placa,String marca,String modelo,String color,String tipoTransmision, String categoria,Sede ubicacion,Double precio) throws IOException
 	{
 		Vehiculo nuevoVehiculo = new Vehiculo(placa,marca,modelo, color, tipoTransmision, categoria, ubicacion, precio);
-		ConsolaPrincipal.listaVehiculos.add(nuevoVehiculo);
+		Sistema.listaVehiculos.add(nuevoVehiculo);
 		reEscribirInventario();
 	}
 	
@@ -55,9 +54,9 @@ public class AdministradorLocal implements Usuario{
 	{
 		int z =0;
 		boolean enlista = false;
-		while (z <ConsolaPrincipal.listaVehiculos.size())
+		while (z <Sistema.listaVehiculos.size())
 		{
-			Vehiculo vehiculo = ConsolaPrincipal.listaVehiculos.get(z);
+			Vehiculo vehiculo = Sistema.listaVehiculos.get(z);
 			if (vehiculo.getPlaca().equals(vehiculobaja))
 			{
 				enlista = true;
@@ -77,9 +76,9 @@ public class AdministradorLocal implements Usuario{
 			boolean encontrado = false;
 			int i = 0;
 			Vehiculo vehiculoBaja = null;
-			while(encontrado == false && i<ConsolaPrincipal.listaVehiculos.size())
+			while(encontrado == false && i<Sistema.listaVehiculos.size())
 			{
-				vehiculoBaja = ConsolaPrincipal.listaVehiculos.get(i);
+				vehiculoBaja = Sistema.listaVehiculos.get(i);
 				if (vehiculoBaja.getPlaca().equals(vehiculobaja))
 				{
 					encontrado = true;
@@ -88,7 +87,7 @@ public class AdministradorLocal implements Usuario{
 					
 				}
 			}
-			ConsolaPrincipal.listaVehiculos.remove(vehiculoBaja);
+			Sistema.listaVehiculos.remove(vehiculoBaja);
 			System.out.println("\nEL VEHICULO HA SIDO DADO DE BAJA EXITOSAMENTE ");
 			reEscribirInventario();
 		}
@@ -96,8 +95,8 @@ public class AdministradorLocal implements Usuario{
 	
 	public static void reEscribirInventario() throws IOException {
 		String data="placa:marca:modelo:color:tipoDeTransmision:categoria:sede:precio\n";
-		for (int a =0 ; a < ConsolaPrincipal.listaVehiculos.size(); a++) {
-			Vehiculo elVehiculo = ConsolaPrincipal.listaVehiculos.get(a);
+		for (int a =0 ; a < Sistema.listaVehiculos.size(); a++) {
+			Vehiculo elVehiculo = Sistema.listaVehiculos.get(a);
 			data+= elVehiculo.getPlaca()+ ":" + elVehiculo.getMarca()+ ":" + elVehiculo.getModelo()+ ":" +elVehiculo.getColor()+ ":" +elVehiculo.getTipoTransmision()+ ":" +elVehiculo.getCategoria() +":"+ elVehiculo.getUbi().getnombre() + ":" + elVehiculo.getPrecio() + "\n";
 		}
 			FileWriter file = new FileWriter("./data/archivoInventario.txt");
