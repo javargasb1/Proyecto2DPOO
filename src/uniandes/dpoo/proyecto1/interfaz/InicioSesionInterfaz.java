@@ -58,7 +58,17 @@ public class InicioSesionInterfaz extends JFrame
 			}
 			else if (opcion == 2)
 			{
-				// Interfaz Empleado
+				
+				String trabajo = usuario.getWork();
+				
+				if(trabajo.equals("AdministradorLocal")) 
+				{
+				InterfazAdministrador frame = new InterfazAdministrador();
+				}
+				if(trabajo.equals("ActualizadorEstadoVehiculo")) 
+				{
+				InterfazActualizador frame = new InterfazActualizador();
+				}
 			}
 		}
 		else 
