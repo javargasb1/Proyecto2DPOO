@@ -12,6 +12,7 @@ import uniandes.dpoo.proyecto1.modelo.Vehiculo;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -48,17 +49,11 @@ public class InterfazAdministrador extends JFrame
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);	
 		setLocationRelativeTo(null);
-	}
-	
-	
 
-	public static void registrarcompra() {		
-		new PanelRegistrarCompra();
+      
 	}
-	public static void dardebaja() {
-		new PanelDarBaja();
-		
-	}
+	
+	
 	
 	public static String input(String mensaje)
 	{

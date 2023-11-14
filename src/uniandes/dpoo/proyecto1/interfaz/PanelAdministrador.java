@@ -18,19 +18,39 @@ public class PanelAdministrador extends JPanel implements ActionListener
 
 	public PanelAdministrador()
 	{
-		botonRegistrar = new JButton("Registrar Compra Vehiculo");
+		JButton botonRegistrar = new JButton("Registrar Compra Vehiculo");
 		botonRegistrar.addActionListener(this);
 		botonRegistrar.setPreferredSize(new Dimension(200,100));
-		botonSalir = new JButton("Salir");
-		botonBaja = new JButton("Dar de Baja Vehiculo");
+		JButton botonSalir = new JButton("Salir");
+		JButton botonBaja = new JButton("Dar de Baja Vehiculo");
 		botonBaja.addActionListener(this);
 		botonBaja.setPreferredSize(new Dimension(200,100));
-		botonSalir.addActionListener(new ActionListener() {
+		
+		botonRegistrar.addActionListener(new ActionListener() 
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                if (botonSalir.isSelected()) {
-                    System.exit(0);
-                } 
+            public void actionPerformed(ActionEvent e) 
+            {
+            	registrarcompra();
+            }
+        });
+
+		botonBaja.addActionListener(new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+            	dardebaja();		
+            }
+        });
+
+
+        botonSalir.addActionListener(new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+                System.exit(0);
             }
         });
 		JLabel bienvenido = new JLabel("Bienvenido Administrador, que accion desea realizar?");
@@ -55,13 +75,18 @@ public class PanelAdministrador extends JPanel implements ActionListener
 
 		
 	}
+	
+	private void registrarcompra() {		
+		new RegistrarCompraDialog(null);
+	}
+	private void dardebaja() {
+		new DarBajaDialog(null);
+		
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		if(e.getActionCommand().equals(botonRegistrar))
-			InterfazAdministrador.registrarcompra();
-		if(e.getActionCommand().equals(botonBaja))
-			InterfazAdministrador.dardebaja();		
+		// TODO Auto-generated method stub
+		
 	}
-	
 }
