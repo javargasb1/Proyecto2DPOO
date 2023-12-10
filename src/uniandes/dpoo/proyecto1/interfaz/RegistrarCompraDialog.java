@@ -30,7 +30,7 @@ public class RegistrarCompraDialog extends JDialog
     {
     	super(panelAdministrador, "Registrar Compra Vehiculo", true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(700, 500);
+        setSize(900, 700);
         setLocationRelativeTo(panelAdministrador);
         JPanel panelPrincipal = new JPanel(new BorderLayout());
         JPanel panelNorte = new JPanel(new BorderLayout());
@@ -70,7 +70,13 @@ public class RegistrarCompraDialog extends JDialog
         addToPanel(panel, new JLabel("Precio:"), gbc, 0, 80);
         JTextField txtPrecio = new JTextField(20);
         addToPanel(panel,txtPrecio,gbc,1,80);
-       
+        addToPanel(panel, new JLabel("Tipo de vehiculo:"), gbc, 0, 90);
+        JTextField txttipo = new JTextField(20);
+        addToPanel(panel,txttipo,gbc,1,90);
+        addToPanel(panel, new JLabel("Porcentaje adicional de la prima del seguro:"), gbc, 0, 100);
+        JTextField txtPorcentaje = new JTextField(20);
+        addToPanel(panel,txtPorcentaje,gbc,1,100);
+  
         JButton btnAceptar = new JButton("Aceptar");
         btnAceptar.addActionListener(new ActionListener() 
         {

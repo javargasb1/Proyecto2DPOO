@@ -13,12 +13,14 @@ public class Vehiculo
 	private String tipoTransmision;
 	private String categoria;
 	private Sede ubicacion;
+	private String tipodevehículo;
+	private Double Porcentajeadicionalprimaseguro;
 	private Map<LocalDate, String> estado = new HashMap<>();
 	private Double precio;
 	private Map<LocalDate, Boolean> disponibilidad = new HashMap<>();
 	
 	public Vehiculo(String placa,String marca,String modelo,String color,String tipoTransmision,
-			String categoria,Sede ubicacion,Double precio)
+			String categoria,Sede ubicacion,Double precio, String tipodevehículo, Double Porcentajeadicionalprimaseguro)
 	{
 		this.placa = placa;
 		this.marca = marca;
@@ -28,6 +30,8 @@ public class Vehiculo
 		this.categoria = categoria;
 		this.ubicacion = ubicacion;
 		this.precio = precio;
+		this.tipodevehículo = tipodevehículo;
+		this.Porcentajeadicionalprimaseguro = Porcentajeadicionalprimaseguro;
 		LocalDate date = LocalDate.now();
 		for (int i = 0; i < 730; i++) {
 			disponibilidad.put(date.plusDays(i), true);
@@ -74,7 +78,14 @@ public class Vehiculo
 		return precio;
 	}
 	
+	public String getTipodevehículo() {
 
+		return tipodevehículo;
+	}
+	public Double getPorcentajeadicionalprimaseguro() {
+
+		return Porcentajeadicionalprimaseguro;
+	}
 	
 	public void bloquearDisponibilidad(String estado2,LocalDate fechaRecogida, LocalDate fechaDevuelta)
 	{

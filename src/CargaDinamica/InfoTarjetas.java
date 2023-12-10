@@ -37,9 +37,7 @@ public class InfoTarjetas extends JFrame{
 		logoPanel.setPreferredSize(new Dimension(anchoVentana/2,largoVentana/2));
 		add(logoPanel,BorderLayout.WEST);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        //JPanel optionsPanel = new JPanel();
-        //optionsPanel.setLayout( new GridLayout(numero,1 ) );	
+
         add(optionsPanel, BorderLayout.CENTER);
         cargarTarjetasDeTextFile("./data/archivoTarjetas.txt");
         setVisible(true);
@@ -68,7 +66,6 @@ public class InfoTarjetas extends JFrame{
 			
 			for (String name : nombreTarjetas) 
 			{
-				//numero +=1;
                 Class clase = Class.forName("CargaDinamica."+name);
                 InfoTarjeta objeto = (InfoTarjeta) clase.getDeclaredConstructor().newInstance();
                 
