@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-20">
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Isabella Caputi/Downloads/pdfbox-3.0.1.jar" sourcepath="C:/Users/Isabella Caputi/Downloads/pdfbox-3.0.1.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
+			<attribute name="source_encoding" value="UTF-8"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/javar/OneDrive/Documentos/DPOO/pdfbox-3.0.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
