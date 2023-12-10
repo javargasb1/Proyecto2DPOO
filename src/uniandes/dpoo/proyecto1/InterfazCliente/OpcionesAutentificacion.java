@@ -1,51 +1,40 @@
-package uniandes.dpoo.proyecto1.interfaz;
+package uniandes.dpoo.proyecto1.InterfazCliente;
 
-import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
+public class OpcionesAutentificacion extends JPanel implements ActionListener
 {
-	private InicioSesionInterfaz padre;
+	private NuevaInterfazCliente padre;
 	private JTextField txtUsuario;
     private JPasswordField txtContraseña;
     private JButton btnIniciarSesion;
     private JButton btnCrearCuenta;
     private JCheckBox chkMostrarContraseña;
     
-    private JRadioButton radioCliente;
-    private JRadioButton radioEmpleado;
     
 
-	public PanelOpcionesInicioSesion(InicioSesionInterfaz padre)
+	public OpcionesAutentificacion(NuevaInterfazCliente padre)
 	{
 		this.padre = padre;
 		
 		setLayout(new GridBagLayout());
 		
-		ButtonGroup buttonGroup = new ButtonGroup();
-        // Creación de componentes
-		radioCliente = new JRadioButton("Cliente");
-        radioCliente.setSelected(true);
-        radioEmpleado = new JRadioButton("Empleado");
-        
-        buttonGroup.add(radioCliente);
-        buttonGroup.add(radioEmpleado);
+		JLabel lblTitulo = new JLabel("Bienvenido Cliente :)");
+		lblTitulo.setFont(new Font("Arial", Font.BOLD, 25));
         
         JLabel lblUsuario = new JLabel("Usuario:");
         txtUsuario = new JTextField(15);
@@ -83,12 +72,11 @@ public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
         gbc.insets = new Insets(5, 5, 5, 5); // Márgenes externos
         gbc.gridx = 0;
         gbc.gridy = 0;
-        add(radioCliente, gbc);
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        add(radioEmpleado, gbc);
+        gbc.gridwidth = 2; // Ocupa dos columnas
+        add(lblTitulo,gbc);
         gbc.gridx = 0;
         gbc.gridy = 1;
+        gbc.gridwidth = 1;
         add(lblUsuario, gbc);
         gbc.gridx = 1;
         gbc.gridy = 1;
@@ -99,7 +87,7 @@ public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
         gbc.gridx = 1;
         gbc.gridy = 2;
         add(txtContraseña, gbc);
-        gbc.gridx = 0;
+        gbc.gridx = 0;	
         gbc.gridy = 3;
         gbc.gridwidth = 2; // Ocupa dos columnas
         add(chkMostrarContraseña, gbc);
@@ -119,14 +107,9 @@ public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
         String usuario = txtUsuario.getText();
         char[] contraseña = txtContraseña.getPassword();
         String contraseñaString = new String(contraseña);
-        int opcion = 1; //Cliente seleccionado por deafult.
-        if (radioEmpleado.isSelected())
-        {
-        	opcion = 2;
-        }
-        
+        int opcion = 1; // 1 significa Cliente
 		try {
-			padre.iniciarSesion(usuario,contraseñaString,opcion);
+			padre.IniciarSesion(usuario,contraseñaString,opcion);
 		} catch (IOException | ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -136,3 +119,4 @@ public class PanelOpcionesInicioSesion extends JPanel implements ActionListener
 	}
 	
 }
+

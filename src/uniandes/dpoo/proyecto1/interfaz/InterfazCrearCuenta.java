@@ -7,6 +7,7 @@ import uniandes.dpoo.proyecto1.modelo.LicenciaConduccion;
 import uniandes.dpoo.proyecto1.modelo.Sede;
 import uniandes.dpoo.proyecto1.modelo.Seguro;
 import uniandes.dpoo.proyecto1.modelo.Sistema;
+import uniandes.dpoo.proyecto1.modelo.Usuario;
 import uniandes.dpoo.proyecto1.modelo.Vehiculo;
 
 import java.awt.*;
@@ -48,17 +49,26 @@ public class InterfazCrearCuenta extends JFrame
 
 	private JTextField txtClave;
 	
-	private Sistema sistema = new Sistema();
+	private Sistema sistema;
 
 	private JTextField txtUbicacion;
 
-    public InterfazCrearCuenta() {
+    public InterfazCrearCuenta(String tipoUsuario) {
         super("Registro de Cuenta");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(700, 500);
         setLocationRelativeTo(null);
         
-        InterfazSeleccionTipoUsuario();
+        if (tipoUsuario == null)
+        {
+        	InterfazSeleccionTipoUsuario();
+        }
+        else
+        {
+        	this.tipoUsuario = tipoUsuario;
+        }
+       
+        
         // Panel del Empleado con BorderLayout
         JPanel PanelPrincipal = new JPanel(new BorderLayout());
 
@@ -106,7 +116,7 @@ public class InterfazCrearCuenta extends JFrame
 	        txtNumeroDocumento = new JTextField(15);
 	        addToPanel(panel,txtNumeroDocumento,gbc,1,4);
 	        
-	        addToPanel(panel,new JLabel("Nacioanlidad:"),gbc,0,5);
+	        addToPanel(panel,new JLabel("Nacionalidad:"),gbc,0,5);
 	        txtNacionalidad = new JTextField(15);
 	        addToPanel(panel,txtNacionalidad,gbc,1,5);
 	        
@@ -171,6 +181,7 @@ public class InterfazCrearCuenta extends JFrame
 	    			String clave = txtClave.getText();
 	                
 	    			try {
+	    				sistema = new Sistema();
 						sistema.crearCuentaCliente(nombre,login,clave,datosContacto,nacimiento,
 								nacionalidad,numeroDocumento,licencia,pago);
 						String mensaje = "Se ha creado su cuenta de Cliente con exito!\n";
@@ -264,6 +275,7 @@ public class InterfazCrearCuenta extends JFrame
 	            	String clave = txtClave.getText();
 	            
 					try {
+						sistema = new Sistema();
 						sistema.crearCuentaEmpleado(opcion, login, clave, nombre, ubicacion);
 						String mensaje = "Se ha creado su cuenta de Empleado con exito!\n";
 						JOptionPane.showMessageDialog(null, mensaje, "Éxito", JOptionPane.INFORMATION_MESSAGE);

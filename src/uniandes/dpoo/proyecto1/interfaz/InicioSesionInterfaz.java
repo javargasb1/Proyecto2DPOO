@@ -80,7 +80,7 @@ public class InicioSesionInterfaz extends JFrame
 
 	public void CrearCuenta() 
 	{
-		new InterfazCrearCuenta();
+		new InterfazCrearCuenta(null);
 	}
 	
 }
