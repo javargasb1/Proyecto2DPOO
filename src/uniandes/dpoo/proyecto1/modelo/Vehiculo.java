@@ -20,7 +20,7 @@ public class Vehiculo
 	private Map<LocalDate, Boolean> disponibilidad = new HashMap<>();
 	
 	public Vehiculo(String placa,String marca,String modelo,String color,String tipoTransmision,
-			String categoria,Sede ubicacion,Double precio, String tipodevehículo, Double Porcentajeadicionalprimaseguro)
+			String categoria,Sede ubicacion,Double precio)
 	{
 		this.placa = placa;
 		this.marca = marca;

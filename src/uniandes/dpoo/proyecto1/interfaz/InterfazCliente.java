@@ -26,7 +26,11 @@ public class InterfazCliente extends JFrame
 	private int opcion;
 	private static Cliente usuario;
 	
-    public InterfazCliente(Usuario usuario) 
+    public static void setUsuario(Cliente usuario) {
+		InterfazCliente.usuario = usuario;
+	}
+
+	public InterfazCliente(Usuario usuario) 
     {
     	this.usuario = (Cliente) usuario;
         // Configuración del JFrame
